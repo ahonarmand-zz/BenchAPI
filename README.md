@@ -1,11 +1,12 @@
-#Bench Transaction API Retriever
+# Bench Transaction API Retriever
 
-###Installation
+### Installation
+
 ```
 pip install -r requirements.txt
 ```
 
-###Running the Tests
+### Running the Tests
 To run all tests:
 ```
 python bench_test.py
@@ -15,7 +16,7 @@ To run a specific test:
 python bench_test.py BenchDAOTestCase.<test_name>
 ```
 
-###TODO: 
+### TODO: 
 * add loggers to accommodate easier debugging and more fine-tuned tracking of the app. 
 * Currently the application is keeping all the records received from the API in memory. If we are concerned about
 memory usage, we can sort each page that we get from the server based on date and then save it to a file.
