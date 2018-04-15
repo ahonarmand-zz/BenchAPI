@@ -9,9 +9,11 @@ class MismatchingTotalCountError(Exception):
     '''
     pass
 
+
 class MismatchingPageNumber(Exception):
     '''Thrown when the page number in request and response do not match'''
     pass
+
 
 class Page:
     '''stores the total_count and transactions reveived from a page'''
