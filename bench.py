@@ -90,7 +90,7 @@ class BenchAPIDAO:
                 resp_json = response.json()
                 transactions = BenchAPIDAO.convert_json_to_transaction_list(resp_json["transactions"])
                 if resp_json["page"] != page_num:
-                    raise MismatchingPageNumber("Asked for page %d, but server responded with page %d", (page_num, resp_json["page"]))
+                    raise MismatchingPageNumber("Asked for page %d, but server responded with page %d" % (page_num, resp_json["page"]))
                 return Page(page_num, resp_json["totalCount"], transactions)
             except requests.exceptions.Timeout as e:
                 print("GET request to %s timed out. Retrying" % url)
@@ -111,7 +111,7 @@ class BenchAPIDAO:
                 traceback.print_exc(file=sys.stdout)
                 sys.exit(1)
             except KeyError as e:
-                #This happens when the response does not have transactions, totalCount, or page fields
+                #This happens when the response does not have transactions, totalCount, or page fields.
                 print("The response received from server is missing a field. Exiting...")
                 traceback.print_exc(file=sys.stdout)
                 sys.exit(1)
@@ -121,10 +121,10 @@ class BenchAPIDAO:
         num_records_read = 0
         total_count = None
         current_page = 1
-        while (not total_count) or (num_records_read < total_count):
+        while (total_count == None) or (num_records_read < total_count):
             page = self.retrieve_next_page(current_page)
             self.transactions.extend(page.transactions)
-            if not total_count:
+            if total_count == None:
                 total_count = page.total_count
             elif total_count != page.total_count:
                 raise MismatchingTotalCountError("The total count on page %d does not match the total count on first page" % current_page)
