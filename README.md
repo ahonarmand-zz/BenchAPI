@@ -1,9 +1,17 @@
 # Bench Transaction API Retriever
 
+This is a command line application that fetches all transactions from the Bench Transaction API. It will then calculate the total balance and print the result. It will also calculate and display the running daily balance for all the days on which a transaction took place.
+
 ### Installation
 
 ```
 pip install -r requirements.txt
+```
+
+### Running the application
+
+```
+python bench.py
 ```
 
 ### Running the Tests
@@ -26,4 +34,4 @@ merge sort algorithm.
 * Concurrency: If there is a way to calculate how many pages we need to read from the start, then we can make the API calls
 concurrently to increase the speed of the program. Currently, we don't know if there is a guarentee on the number of records 
 per page, so the total number of pages cannot be calculated from the start. 
-* If we are guarenteed that the records are already in order the sort in calculate_running_daily_balance() will be unnecessary.
+* If we are guarenteed that the records are already in order, then the sort in calculate_running_daily_balance() will be unnecessary.
