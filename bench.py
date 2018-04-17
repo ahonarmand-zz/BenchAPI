@@ -75,8 +75,8 @@ class BenchAPIDAO:
         input: page_number
         output: a list of Transaction objects of all transactions on the page
         retrieves the page with page number equal to page_num.
-        It will crash the program if the response cannot be decoded into json or if the json does not have totalCount
-        or transactions fields.
+        The program will give an appropriate message and exit if the response cannot be decoded 
+        into json or if the json does not have totalCount or transactions fields.
         '''
         MAX_NUM_REQUEST_TRIES = 2
         TIME_OUT_SECONDS = 5
